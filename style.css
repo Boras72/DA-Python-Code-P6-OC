@@ -1,0 +1,47 @@
+.section{
+    border: 1px solid;
+    margin-bottom: 5px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.film{
+    border: 1px solid red;
+    margin: 10px;
+    display:inline-block;
+    
+    /*flex: 1 1 calc(33.33%-20px)*/
+    width: 25%;
+    position: relative;
+}
+.film > img{
+    width: 100%;
+    height: 100%;
+    display:block;
+    
+
+}
+.film_title{
+    position: absolute;
+    top: 10%;
+    background-color: rgba(0, 0, 0, 0.594);
+    width: 98%;
+    height: 40%;
+    color: white;
+    padding: 1%;
+    
+
+}
+.film_title > button{
+    position: absolute;
+    right: 0;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 18px;
+    padding: 5px;
+    width: 75px;
+    margin: 5px;
+}
