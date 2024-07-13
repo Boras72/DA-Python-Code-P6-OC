@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <title>Test page HTML P6</title>
 </head>
 <body>
     <!--Section : Vidéos à la demande -->
-    <div class="section">
+    <div class="section_head">
         <img src="images/logo.png" alt="">
-        <p>
-            Vidéos à la demande
-        </p>
+        <h2>Vidéos à la demande</h2>
     </div>
     <!--Section : Meilleur film (toutes catégories confondues)-->
     <div>
-        <h2>Meilleur film</h2>
-        <div class="section">
-            <div>
-                <img src="Images/image1.png" alt="">
-            </div>
-            <div>
-                <h2>The Big Lebowski</h2>
-                <p>
-                    Jeff "The Dude" Lebowski, mistaken for a millionaire of the same name, seeks restitution for his ruined rug and enlists his bowling buddies to help get it.
-                </p>
-                <p>
-                    <button>Détails</button>
-                </p>
-            </div>
+        <h3>X</h3>
+        <h2 id="best_film">Meilleur film</h2>
+        <div id="section_best_film"  class="section_best_film">
+            
         </div>     
     </div>
     <!--Section : Meilleurs films  (toutes catégories confondues)-->
@@ -40,42 +31,42 @@
                 <img src="Images/image2.png" alt="">
                 <div class="film_title">
                     <p>Titanic</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('titanic')">Détails</button>
                 </div>
             </div>
             <div class="film">
                 <img src="Images/image3.png" alt="">
                 <div class="film_title">
                     <p>Retour vers le futur</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('retour vers le futur')">Détails</button>
                 </div>
             </div>
             <div class="film">
                 <img src="Images/image4.png" alt="">
                 <div class="film_title">
                     <p>Scarface</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('scarface')">Détails</button>
                 </div>
             </div>
             <div class="film">
                 <img src="Images/image5.png" alt="">
                 <div class="film_title">
                     <p>Pulp Fiction</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('pulp fiction')">Détails</button>
                 </div>
             </div>
             <div class="film">
                 <img src="Images/image6.jpeg" alt="">
                 <div class="film_title">
                     <p>Le Parrain</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('parrain')">Détails</button>
                 </div>
             </div>
             <div class="film">
                 <img src="Images/image7.png" alt="">
                 <div class="film_title">
                     <p>Alien</p>
-                    <button>Détails</button>
+                    <button onclick="openModal('alien')">Détails</button>
                 </div>
             </div>
 
@@ -95,35 +86,39 @@
         </select>
     </div>
     <!--Section : Modal Desktop -->
-    <div>
-        <div>
+    <div class="section_modal">
+        <div class="modal">
+            <div class="film_modal">
+                <div>
+                    <h2><b>The Big Lebowski</b></h2>
+                    <p><b>1998 - Comedy, Crime, Sport </b></p>
+                    <p><b>PG-13 - 117 minutes (USA / UK)</b></p>
+                    <p><b>IMDB score: 8.1/10 </b></p>
+                    
+                    <p>
+                        <b>Réalisé par:</b> <br>
+                        Joel Cohen, Ethan Cohen
+                    </p>
+                
+                </div>
+                <div>
+                    <img src="Images/image1.png" alt="">
+                </div>
+            </div>
             <div>
-                <h2>The Big Lebowski</h2>
-                <p>1998 - Comedy, Crime, Sport </p>
-                <p>PG-13 - 117 minutes (USA / UK)</p>
-                <p>IMDB score: 8.1/10 </p>
                 
                 <p>
-                    Réalisé par: <br>
-                    Joel Cohen, Ethan Cohen
+                    When "the dude" Lebowski is mistaken for a millionaire Lebowski, two thugs urinate on his rug to coerce him into paying a debt he knows nothing about. While attempting to gain recompense for the ruined rug from his wealthy counterpart, he accepts a one-time job with high pay-off. He enlists the help of his bowling buddy, Walter, a gun-toting Jewish-convert with anger issues. Deception leads to more trouble, and it soon seems that everyone from porn empire tycoons to nihilists want something from The Dude.
                 </p>
+                <p>
+                    <b>Avec:</b><br>
+                    David Huddleston, Flea, Jack Kehler, Jeff Bridges, Jimmie Dale Gilmore, John Goodman, John Turturro, Julianne Moore, Mark Pellegrino, Peter Stormare, Philip Moon, Philip Seymour Hoffman, Steve Buscemi, Tara Reid, Torsten Voges.
+                </p>
+                <button class="modal_btn">Fermer</button>
             </div>
-            <div>
-                <img src="Images/image1.png" alt="">
-            </div>
-        </div>
-        <div>
-            
-            <p>
-                When "the dude" Lebowski is mistaken for a millionaire Lebowski, two thugs urinate on his rug to coerce him into paying a debt he knows nothing about. While attempting to gain recompense for the ruined rug from his wealthy counterpart, he accepts a one-time job with high pay-off. He enlists the help of his bowling buddy, Walter, a gun-toting Jewish-convert with anger issues. Deception leads to more trouble, and it soon seems that everyone from porn empire tycoons to nihilists want something from The Dude.
-            </p>
-            <p>
-                Avec:<br>
-                David Huddleston, Flea, Jack Kehler, Jeff Bridges, Jimmie Dale Gilmore, John Goodman, John Turturro, Julianne Moore, Mark Pellegrino, Peter Stormare, Philip Moon, Philip Seymour Hoffman, Steve Buscemi, Tara Reid, Torsten Voges.
-            </p>
-            <button>Fermer</button>
         </div>
     </div>
 
+    <script src="script.js"></script>
 </body>
 </html>

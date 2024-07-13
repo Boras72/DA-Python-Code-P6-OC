@@ -1,0 +1,10 @@
+http://localhost:8000/api/v1/titles
+
+###
+
+http://localhost:8000/api/v1/genres
+
+
+
+//content-Type: application/json
+//{"personne": "Salim"}
