@@ -1,17 +1,54 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log("DOM fully loaded and parsed");
     console.log("connexion au DOM");
-  
-   
-
-  });
-
-function openModal(film_name){
-    
+});
 
 
-            
+function openModal(film_name){        
 }
+
+// I - GET
+// Meilleurs films
+async function getFilmByCategory(category=""){
+    let url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&genre="+category
+    console.log(url)
+
+    // requête pour récupérer les 5 films
+    const response = await fetch(url)
+    const resultat = await response.json();
+    // let film_url = resultat.results[0].url;
+    let first_result = resultat.results
+    let next_url = resultat.next
+
+    const response_next = await fetch(next_url)
+    const resultat_next = await response_next.json();
+
+    let second_result = resultat_next.results
+    let all_result = first_result.concat(second_result)
+
+    return all_result 
+}
+
+
+async function getAllCategory(){
+    let url = "http://localhost:8000/api/v1/genres/"
+    let all_category = []
+    do{
+        const response = await fetch(url)
+        const resultat = await response.json();
+        
+        all_category = all_category.concat(resultat.results)
+        url = resultat.next
+
+    }while(url != null)
+console.log(all_category)
+}
+
+getAllCategory()
+
+
+// II - DISPLAY
+// Meilleur Film
 async function filmDetail(film_url){
     const response = await fetch(film_url)
     const resultat = await response.json();
@@ -49,29 +86,7 @@ async function displayBestFilm(){
 }
 
 
-async function getFilmByCategory(category=""){
-    let url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&genre="+category
-    console.log(url)
-
-    // requête pour récupérer les 5 films
-    const response = await fetch(url)
-    const resultat = await response.json();
-    // let film_url = resultat.results[0].url;
-    let first_result = resultat.results
-    let next_url = resultat.next
-
-    const response_next = await fetch(next_url)
-    const resultat_next = await response_next.json();
-
-    let second_result = resultat_next.results
-    let all_result = first_result.concat(second_result)
-
-    return all_result
-    
-
-}
-
-
+//Meilleurs films
 async function displayAllBestFilm(){
     let all_best_film = await getFilmByCategory("")
     let best_film = document.getElementById("best_films")
@@ -91,8 +106,47 @@ async function displayAllBestFilm(){
 }
 
 
+// catégorie 1 et 2 :
+async function displayCategoryFilm(category_name, category_id){
+    let all_category_film = await getFilmByCategory(category_name)
+    let section_category = document.getElementById(category_id)
+    section_category.innerHTML = ""
+    all_category_film = all_category_film.slice(0,6)
+    all_category_film.forEach(film => {
+        section_category.innerHTML += `
+        <div class="film">
+                <img src="${film.image_url}" alt="">
+                <div class="film_title">
+                    <p>${film.title}</p>
+                    <button onclick="openModal('titanic')">Détails</button>
+                </div>
+            </div>
+        `  
+    });
+}
+
+
+// categorie libre :
+async function displayOtherCategory(){
+    let selector = document.getElementById("selector")
+    let category_choice = selector.value
+    console.log(category_choice)
+    if(category_choice != ""){
+        displayCategoryFilm(category_choice, "other_category") 
+    }else{
+        document.getElementById("other_category").innerHTML = ""
+
+    }
+ }
+
+
+
 
 displayBestFilm()
 displayAllBestFilm()
+displayCategoryFilm("Drama","drama")
+displayCategoryFilm("Biography","biography")
+
+
 
 

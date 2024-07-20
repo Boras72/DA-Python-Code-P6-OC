@@ -26,25 +26,48 @@
     <!--Section : Meilleurs films  (toutes catégories confondues)-->
     <div>
         <h2>Meilleurs Films</h2>
-        <div class="section" id="best_films">
-            
-            
+        <div class="section" id="best_films"> 
 
         </div>
     </div>
+
+    <!--Section : Catégorie 1  (catégorie : Biography)-->
+    <div>
+        <h2>Biography</h2>
+        <div class="section" id="biography"> 
+
+        </div>
+    </div>
+
+    <!--Section : Catégorie 2  (catégorie : Drame)-->
+    <div>
+        <h2>Drama</h2>
+        <div class="section" id="drama"> 
+
+        </div>
+    </div>
+
+
     <!--Section : Meilleurs films de la catégorie : "catégorie à choisir par l'user par le menu déroulant" -->
     <div>
-        <h2>Catégorie libre</h2>
-        <select name="" id="">
-            <option value="Films d'action">Films d'action</option>
-            <option value="Comédies">Comédies</option>
-            <option value="Famille">Famille</option>
-            <option value="Films de fantasy">Films de fantasy</option>
-            <option value="Films d'horreur">Films d'horreur</option>
-            <option value="Science-fiction">Science-fiction</option>
-            <option value="Westerns">Westerns</option>
-        </select>
+        <div>
+            <h2>Catégorie libre</h2>
+            <select name="" id="selector" onchange="displayOtherCategory()">
+                <option value="">Choisissez une catégorie</option>
+                <option value="Crime">Crime</option>
+                <option value="Comedy">Comedy</option>
+            </select>
+        </div>
+
+        <div>
+            
+            <div class="section" id="other_category"> 
+    
+            </div>
+        </div>
+        
     </div>
+
     <!--Section : Modal Desktop -->
     <div class="section_modal">
         <div class="modal">
