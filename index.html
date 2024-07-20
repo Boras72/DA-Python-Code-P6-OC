@@ -50,9 +50,9 @@
 
     <!--Section : Meilleurs films de la catégorie : "catégorie à choisir par l'user par le menu déroulant" -->
     <div>
-        <div>
+        <div class="section_select">
             <h2>Catégorie libre</h2>
-            <select name="" id="selector" onchange="displayOtherCategory()">
+            <select class="classic" name="" id="selector" onchange="displayOtherCategory()">
                 <option value="">Choisissez une catégorie</option>
                 <option value="Crime">Crime</option>
                 <option value="Comedy">Comedy</option>
@@ -69,7 +69,7 @@
     </div>
 
     <!--Section : Modal Desktop -->
-    <div class="section_modal">
+    <div class="section_modal" id="section_modal">
         <div class="modal">
             <div class="film_modal">
                 <div>
@@ -97,7 +97,7 @@
                     <b>Avec:</b><br>
                     David Huddleston, Flea, Jack Kehler, Jeff Bridges, Jimmie Dale Gilmore, John Goodman, John Turturro, Julianne Moore, Mark Pellegrino, Peter Stormare, Philip Moon, Philip Seymour Hoffman, Steve Buscemi, Tara Reid, Torsten Voges.
                 </p>
-                <button class="modal_btn">Fermer</button>
+                <button class="modal_btn" onclick="closeModal()">Fermer</button>
             </div>
         </div>
     </div>
