@@ -9,25 +9,25 @@
     <link rel="stylesheet" href="style.css">
     <title>Test page HTML P6</title>
 </head>
+
 <body>
-    <!--Section : Vidéos à la demande -->
+    <!-- Section : Vidéos à la demande -->
     <div class="section_head">
         <img src="images/logo.png" alt="">
         <h2>Vidéos à la demande</h2>
     </div>
-    <!--Section : Meilleur film (toutes catégories confondues)-->
+
+    <!-- Section : Meilleur film (toutes catégories confondues) -->
     <div>
-        
         <h2 id="best_film">Meilleur film</h2>
-        <div id="section_best_film"  class="section_best_film">
-            
+        <div class="section_best_film" id="section_best_film">
         </div>     
     </div>
-    <!--Section : Meilleurs films  (toutes catégories confondues)-->
+
+    <!-- Section : Meilleurs films  (toutes catégories confondues) -->
     <div>
         <h2>Meilleurs Films</h2>
         <div class="section" id="best_films"> 
-
         </div>
     </div>
 
@@ -35,7 +35,6 @@
     <div>
         <h2>Biography</h2>
         <div class="section" id="biography"> 
-
         </div>
     </div>
 
@@ -43,19 +42,15 @@
     <div>
         <h2>Drama</h2>
         <div class="section" id="drama"> 
-
         </div>
     </div>
 
 
-    <!--Section : Meilleurs films de la catégorie : "catégorie à choisir par l'user par le menu déroulant" -->
+    <!-- Section : Meilleurs films de la catégorie : "catégorie à choisir par l'user par le menu déroulant" -->
     <div>
         <div class="section_select">
             <h2>Catégorie libre</h2>
             <select class="classic" name="" id="selector" onchange="displayOtherCategory()">
-                <option value="">Choisissez une catégorie</option>
-                <option value="Crime">Crime</option>
-                <option value="Comedy">Comedy</option>
             </select>
         </div>
 
@@ -68,38 +63,9 @@
         
     </div>
 
-    <!--Section : Modal Desktop -->
+    <!-- Section : Modal Desktop -->
     <div class="section_modal" id="section_modal">
-        <div class="modal">
-            <div class="film_modal">
-                <div>
-                    <h2><b>The Big Lebowski</b></h2>
-                    <p><b>1998 - Comedy, Crime, Sport </b></p>
-                    <p><b>PG-13 - 117 minutes (USA / UK)</b></p>
-                    <p><b>IMDB score: 8.1/10 </b></p>
-                    
-                    <p>
-                        <b>Réalisé par:</b> <br>
-                        Joel Cohen, Ethan Cohen
-                    </p>
-                
-                </div>
-                <div>
-                    <img src="Images/image1.png" alt="">
-                </div>
-            </div>
-            <div>
-                
-                <p>
-                    When "the dude" Lebowski is mistaken for a millionaire Lebowski, two thugs urinate on his rug to coerce him into paying a debt he knows nothing about. While attempting to gain recompense for the ruined rug from his wealthy counterpart, he accepts a one-time job with high pay-off. He enlists the help of his bowling buddy, Walter, a gun-toting Jewish-convert with anger issues. Deception leads to more trouble, and it soon seems that everyone from porn empire tycoons to nihilists want something from The Dude.
-                </p>
-                <p>
-                    <b>Avec:</b><br>
-                    David Huddleston, Flea, Jack Kehler, Jeff Bridges, Jimmie Dale Gilmore, John Goodman, John Turturro, Julianne Moore, Mark Pellegrino, Peter Stormare, Philip Moon, Philip Seymour Hoffman, Steve Buscemi, Tara Reid, Torsten Voges.
-                </p>
-                <button class="modal_btn" onclick="closeModal()">Fermer</button>
-            </div>
-        </div>
+        
     </div>
 
     <script src="script.js"></script>

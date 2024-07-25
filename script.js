@@ -4,25 +4,36 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-function openModal(film_id){   
-    let section_modal = document.getElementById("section_modal")
-    section_modal.classList.add("open_modal")
-    console.log(film_id)
-}
-function closeModal(){
-    let section_modal = document.getElementById("section_modal")
-    section_modal.classList.remove("open_modal")
-}
+
+
+
 
 
 // I - GET
-// Meilleurs films
+
+// Meilleur Film
+async function filmDetail(film_url){
+    const response = await fetch(film_url)
+    const resultat = await response.json();
+    //return resultat.results[0];
+    return resultat
+}
+
+async function getBestFilm (){
+    const response = await fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes')
+    const resultat = await response.json();
+    let film_url = resultat.results[0].url;
+    return filmDetail(film_url) 
+}
+
+
+// Meilleurs films par catégorie
 async function getFilmByCategory(category=""){
     let url = "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&genre="+category
     console.log(url)
 
     let all_result = []
-    // requête pour récupérer les 5 films
+    // requête pour récupérer les 6 films (5+1)
     const response = await fetch(url)
     const resultat = await response.json();
     // let film_url = resultat.results[0].url;
@@ -37,12 +48,11 @@ async function getFilmByCategory(category=""){
         all_result = all_result.concat(second_result)
 
     }
-    
-
     return all_result 
 }
 
 
+// Meilleurs films toutes catégories confondues
 async function getAllCategory(){
     let url = "http://localhost:8000/api/v1/genres/"
     let all_category = []
@@ -60,25 +70,9 @@ async function getAllCategory(){
 
 
 
-
-// Meilleur Film
-async function filmDetail(film_url){
-    const response = await fetch(film_url)
-    const resultat = await response.json();
-    //return resultat.results[0];
-    return resultat
-}
-
-
-async function getBestFilm (){
-    const response = await fetch('http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes')
-    const resultat = await response.json();
-    let film_url = resultat.results[0].url;
-    return filmDetail(film_url)
-}
-
-
 // II - DISPLAY
+
+// Meilleur film
 async function displayBestFilm(){
     let best_film = await getBestFilm()
     console.log(best_film)
@@ -93,14 +87,14 @@ async function displayBestFilm(){
                 ${best_film.description}
                 </p>
                 <p>
-                    <button class="best_film_btn" onclick="openModal(${best_film.id})">Détails</button>
+                    <button class="best_film_btn" onclick="openModal('${best_film.url}')">Détails</button>
                 </p>
             </div>`
 
 }
 
 
-//Meilleurs films
+// Meilleurs films
 async function displayAllBestFilm(){
     let all_best_film = await getFilmByCategory("")
     let best_film = document.getElementById("best_films")
@@ -112,7 +106,7 @@ async function displayAllBestFilm(){
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
-                    <button onclick="openModal(${film.id})">Détails</button>
+                    <button onclick="openModal('${film.url}')">Détails</button>
                 </div>
             </div>
         `  
@@ -132,7 +126,7 @@ async function displayCategoryFilm(category_name, category_id){
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
-                    <button onclick="openModal(${film.id})">Détails</button>
+                    <button onclick="openModal('${film.url}')">Détails</button>
                 </div>
             </div>
         `  
@@ -140,8 +134,8 @@ async function displayCategoryFilm(category_name, category_id){
 }
 
 
-// categorie libre :
-async function displayOtherCategory(){
+// categorie libre avec menu déroulant :
+async function displayOtherCategory(){ 
     let selector = document.getElementById("selector")
     let category_choice = selector.value
     console.log(category_choice)
@@ -153,8 +147,7 @@ async function displayOtherCategory(){
     }
  }
 
-
-async function displaySelectCategory(){
+async function displaySelectCategory(){   //afficher la liste des options
     let selector = document.getElementById("selector")
     let all_category = await getAllCategory()
     selector.innerHTML = `<option value="">Choisissez une catégorie</option>`
@@ -164,9 +157,64 @@ async function displaySelectCategory(){
 
 }
 
-async function displayModal(){
+
+async function displayModal(film_url){
+    film = await filmDetail(film_url)
+    console.log(film)
+    let section_modal = document.getElementById("section_modal")
+    section_modal.innerHTML = `
+        <div class="modal">
+            <div class="film_modal">
+                <div>
+                    <h2><b>${film.title}</b></h2>
+                    <p><b>${film.year} - ${film.genres} </b></p>
+                    <p><b>PG-13 - ${film.duration} minutes (${film.countries})</b></p>
+                    <p><b>IMDB score: ${film.imdb_score}/10 </b></p>
+                    
+                    <p>
+                        <b>Réalisé par:</b> <br>
+                        ${film.directors}
+                    </p>
+                
+                </div>
+                <div>
+                    <img src="${film.image_url}" alt="">
+                </div>
+            </div>
+            <div>
+                
+                <p>
+                    ${film.long_description}
+                </p>
+                <p>
+                    <b>Avec:</b><br>
+                    ${film.actors}
+                </p>
+                <button class="modal_btn" onclick="closeModal()">Fermer</button>
+            </div>
+        </div>
+    `
+    
     
 }
+
+
+
+
+
+// MODAL
+
+async function openModal(film_url){   
+    let section_modal = document.getElementById("section_modal")
+    await displayModal(film_url)
+    section_modal.classList.add("open_modal")
+    
+}
+function closeModal(){
+    let section_modal = document.getElementById("section_modal")
+    section_modal.classList.remove("open_modal")
+}
+
 
 displaySelectCategory()
 displayBestFilm()
