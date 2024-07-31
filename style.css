@@ -20,6 +20,14 @@ body{
     border: 1px solid;
     justify-content: center;
     padding: 5%;
+    flex-direction:column;
+}
+
+@media(min-width: 600px){
+    .section_best_film{
+        flex-direction:row;
+    }
+    
 }
 
 .section_best_film > div{
@@ -32,7 +40,7 @@ body{
 }
 
 .best_film_btn{
-    width: 20%;
+    width: 100px;
     margin-left: auto;
     display:block;
     background-color: red;
@@ -52,19 +60,33 @@ body{
     margin-bottom: 5px;
     padding: 10px;
     display: flex;
-    align-items: center;
+    /*align-items: center;*/
     flex-wrap: wrap;
-    justify-content: space-around;
+    /*justify-content: space-around;*/
 }
 .film{
     border: 1px solid red;
-    margin: 10px;
-    display:inline-block;
+    margin: 5px;
+    /*display:inline-block;*/
     
-    /*flex: 1 1 calc(33.33%-20px)*/
-    width: 25%;
+    flex: 1 1 100%;
+    /*flex: 1 1 calc(33.33%-10px);*/
+    /*width: 25%;*/
     position: relative;
 }
+
+@media(min-width: 600px){
+    .film{
+        flex:1 1 40%;
+    }
+}
+
+@media(min-width: 1025px){
+    .film{
+        flex:1 1 25%;
+    }
+}
+
 .film > img{
     width: 100%;
     height: 100%;
@@ -103,10 +125,12 @@ body{
     position: fixed;
     top: 0;
     left: 0;
+    right:0;
     background-color:#000000f5;
     height: 100%;
     display: none;
-    width: 100%;
+    overflow-y: scroll;
+    
 }
 
 .open_modal{
@@ -114,25 +138,54 @@ body{
 }
 
 .modal{
-    width: 50%;
+    width: 80%;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 60px;
     border: 1px solid;
     padding: 20px;
     background-color: white;
-
+    
 }
 
 .film_modal{
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
+}
+
+@media(min-width: 1025px){
+    .film_modal{
+        flex-direction: row;
+        
+    }
+    .modal{
+        width:50%;
+    }
+    
+    .modal_img_mobile{
+        display: none;
+
+    }
+    .modal_img_desktop{
+        display: block!important;
+        
+    }
+
+    .modal_img_desktop>img{
+        width: 100%;
+        height: 300px;
+    }
     
 }
 
-.film_modal > div > img{
+.modal_img_mobile>img{
     width: 100%;
-    height: 300px;
+    height: auto;
 
+}
+.modal_img_desktop{
+    display: none;
 }
 
 .modal_btn{

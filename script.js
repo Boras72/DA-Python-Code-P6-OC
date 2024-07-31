@@ -4,12 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 });
 
 
-
-
-
-
-
-// I - GET
+// I - FONCTIONS GET
 
 // Meilleur Film
 async function filmDetail(film_url){
@@ -70,7 +65,7 @@ async function getAllCategory(){
 
 
 
-// II - DISPLAY
+// II - FONCTIONS DISPLAY
 
 // Meilleur film
 async function displayBestFilm(){
@@ -168,7 +163,7 @@ async function displayModal(film_url){
                 <div>
                     <h2><b>${film.title}</b></h2>
                     <p><b>${film.year} - ${film.genres} </b></p>
-                    <p><b>PG-13 - ${film.duration} minutes (${film.countries})</b></p>
+                    <p><b>Rated : ${film.rated} - ${film.duration} minutes (${film.countries})</b></p>
                     <p><b>IMDB score: ${film.imdb_score}/10 </b></p>
                     
                     <p>
@@ -177,14 +172,18 @@ async function displayModal(film_url){
                     </p>
                 
                 </div>
-                <div>
+                <div class="modal_img_desktop">
                     <img src="${film.image_url}" alt="">
                 </div>
             </div>
+            
             <div>
                 
                 <p>
                     ${film.long_description}
+                </p>
+                <p class="modal_img_mobile">
+                    <img src="${film.image_url}" alt="">
                 </p>
                 <p>
                     <b>Avec:</b><br>
@@ -197,9 +196,6 @@ async function displayModal(film_url){
     
     
 }
-
-
-
 
 
 // MODAL
@@ -215,6 +211,9 @@ function closeModal(){
     section_modal.classList.remove("open_modal")
 }
 
+
+
+// APPELS DE FONCTIONS
 
 displaySelectCategory()
 displayBestFilm()
