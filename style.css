@@ -75,13 +75,13 @@ body{
     position: relative;
 }
 
-@media(min-width: 600px){
+@media(min-width: 600px){    /* taille < 600=mobile */
     .film{
         flex:1 1 40%;
     }
 }
 
-@media(min-width: 1025px){
+@media(min-width: 1025px){    /* taille > 600 - 1024= tab */
     .film{
         flex:1 1 25%;
     }
@@ -266,4 +266,8 @@ select.classic {
   select:-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #000;
+  }
+
+  .hidden_film {
+    display: none;
   }

@@ -93,11 +93,12 @@ async function displayBestFilm(){
 async function displayAllBestFilm(){
     let all_best_film = await getFilmByCategory("")
     let best_film = document.getElementById("best_films")
+    
     best_film.innerHTML = ""
     all_best_film = all_best_film.slice(1,7)
     all_best_film.forEach(film => {
         best_film.innerHTML += `
-        <div class="film">
+        <div class="film best_film" >
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
@@ -106,6 +107,8 @@ async function displayAllBestFilm(){
             </div>
         `  
     });
+    ajustScreenFilm('best_film')
+    
 }
 
 
@@ -117,7 +120,7 @@ async function displayCategoryFilm(category_name, category_id){
     all_category_film = all_category_film.slice(0,6)
     all_category_film.forEach(film => {
         section_category.innerHTML += `
-        <div class="film">
+        <div class="film ${category_name}">
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
@@ -126,6 +129,8 @@ async function displayCategoryFilm(category_name, category_id){
             </div>
         `  
     });
+    section_category.insertAdjacentHTML("afterend", `<button class="modal_btn voir_plus" onclick="voirPlus('${category_name}')">Voir plus</button>`)
+    ajustScreenFilm(category_name)
 }
 
 
@@ -195,6 +200,35 @@ async function displayModal(film_url){
     `
     
     
+}
+
+
+function voirPlus(class_name){
+    let films = document.getElementsByClassName(class_name)
+    for (let i = 0; i < films.length; i++) {
+        films[i].classList.remove('hidden_film');
+    }
+
+}
+
+function ajustScreenFilm(class_name){
+    const screen_width = window.innerWidth
+    console.log(screen_width)
+    let films = document.getElementsByClassName(class_name)
+    if (screen_width < 600){
+        for (let i = 0; i < films.length; i++) {
+            if ( i>1 ) {
+                films[i].classList.add('hidden_film');
+            }  
+        }
+    }
+    else if (screen_width < 1025){
+        for (let i = 0; i < films.length; i++) {
+            if ( i>3 ) {
+                films[i].classList.add('hidden_film');
+            }  
+        }
+    }
 }
 
 
