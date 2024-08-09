@@ -1,76 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <title>Test page HTML P6</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!-- Section : Vidéos à la demande -->
     <div class="section_head">
-        <img src="images/logo.png" alt="">
-        <h2>Vidéos à la demande</h2>
+      <img src="images/logo.png" alt="" />
+      <h2>Vidéos à la demande</h2>
     </div>
 
     <!-- Section : Meilleur film (toutes catégories confondues) -->
     <div>
-        <h2 id="best_film">Meilleur film</h2>
-        <div class="section_best_film" id="section_best_film">
-        </div>     
+      <h2 id="best_film">Meilleur film</h2>
+      <div class="section_best_film" id="section_best_film"></div>
     </div>
 
     <!-- Section : Meilleurs films  (toutes catégories confondues) -->
     <div>
-        <h2>Meilleurs Films</h2>
-        <div class="section" id="best_films"> 
-        </div>
-        <button class="modal_btn voir_plus" onclick="voirPlus('best_film')">Voir plus</button>
+      <h2>Meilleurs Films</h2>
+      <div class="section" id="best_films"></div>
+      <button
+        class="voir_btn"
+        id="voir_plus_best_film"
+        onclick="voirPlus('best_film')"
+      >
+        Voir plus
+      </button>
+      <button
+        class="voir_btn"
+        id="voir_moins_best_film"
+        onclick="voirMoins('best_film')"
+      >
+        Voir moins
+      </button>
     </div>
 
     <!--Section : Catégorie 1  (catégorie : Biography)-->
     <div>
-        <h2>Biography</h2>
-        <div class="section" id="biography"> 
-        </div>
-        
+      <h2>Biography</h2>
+      <div class="section" id="biography"></div>
     </div>
 
     <!--Section : Catégorie 2  (catégorie : Drame)-->
     <div>
-        <h2>Drama</h2>
-        <div class="section" id="drama"> 
-        </div>
+      <h2>Drama</h2>
+      <div class="section" id="drama"></div>
     </div>
-
 
     <!-- Section : Meilleurs films de la catégorie : "catégorie à choisir par l'user par le menu déroulant" -->
     <div>
-        <div class="section_select">
-            <h2>Catégorie libre</h2>
-            <select class="classic" name="" id="selector" onchange="displayOtherCategory()">
-            </select>
-        </div>
+      <div class="section_select">
+        <h2>Catégorie libre</h2>
+        <select
+          class="classic"
+          name=""
+          id="selector"
+          onchange="displayOtherCategory()"
+        ></select>
+      </div>
 
-        <div>
-            
-            <div class="section" id="other_category"> 
-    
-            </div>
-        </div>
-        
+      <div>
+        <div class="section" id="other_category"></div>
+      </div>
     </div>
 
     <!-- Section : Modal Desktop -->
-    <div class="section_modal" id="section_modal">
-        
-    </div>
+    <div class="section_modal" id="section_modal"></div>
 
     <script src="script.js"></script>
-</body>
-</html> 
-
+  </body>
+</html>
