@@ -21,7 +21,7 @@ async function getFilmByCategory(category = "") {
   let url =
     "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&genre=" +
     category;
-  console.log(url);
+  console.log(url);                    // A retirer ?
 
   let all_result = [];
   // requête pour récupérer les 6 films (5+1)
@@ -60,9 +60,9 @@ async function getAllCategory() {
 // Meilleur film
 async function displayBestFilm() {
   let best_film = await getBestFilm();
-  console.log(best_film);
+  console.log(best_film);                          // A retirer ?
   let section_best_film_element = document.getElementById("section_best_film");
-  console.log(section_best_film_element);
+  console.log(section_best_film_element);          // A retirer ?
   section_best_film_element.innerHTML = `<div>
                 <img src="${best_film.image_url}" alt="">
             </div>
@@ -129,7 +129,7 @@ async function displayCategoryFilm(category_name, category_id) {
 async function displayOtherCategory() {
   let selector = document.getElementById("selector");
   let category_choice = selector.value;
-  console.log(category_choice);
+  console.log(category_choice);                   // A retirer ?
   if (category_choice != "") {
     displayCategoryFilm(category_choice, "other_category");
   } else {
@@ -149,7 +149,7 @@ async function displaySelectCategory() {
 
 async function displayModal(film_url) {
   film = await filmDetail(film_url);
-  console.log(film);
+  console.log(film);                    // A retirer ?
   let section_modal = document.getElementById("section_modal");
   section_modal.innerHTML = `
         <div class="modal">
@@ -207,7 +207,7 @@ function voirMoins(class_name) {
 
 function ajustScreenFilm(class_name) {
   const screen_width = window.innerWidth;
-  console.log(screen_width);
+  console.log(screen_width);                       // A retirer ?
   let films = document.getElementsByClassName(class_name);
   if (screen_width < 600) {
     for (let i = 0; i < films.length; i++) {
@@ -247,3 +247,4 @@ displayBestFilm();
 displayAllBestFilm();
 displayCategoryFilm("Drama", "drama");
 displayCategoryFilm("Biography", "biography");
+
