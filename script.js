@@ -72,7 +72,7 @@ async function displayBestFilm() {
                 ${best_film.description}
                 </p>
                 <p>
-                    <button class="best_film_btn" onclick="openModal('${best_film.url}')">Détails</button>
+                    <button class="details_button best_film_btn" onclick="openModal('${best_film.url}')">Détails</button>
                 </p>
             </div>`;
 }
@@ -90,7 +90,7 @@ async function displayAllBestFilm() {
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
-                    <button onclick="openModal('${film.url}')">Détails</button>
+                    <button class="details_button" onclick="openModal('${film.url}')">Détails</button>
                 </div>
             </div>
         `;
@@ -110,7 +110,7 @@ async function displayCategoryFilm(category_name, category_id) {
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
                     <p>${film.title}</p>
-                    <button onclick="openModal('${film.url}')">Détails</button>
+                    <button class="details_button" onclick="openModal('${film.url}')">Détails</button>
                 </div>
             </div>
         `;

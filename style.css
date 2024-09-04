@@ -67,17 +67,36 @@ body {
   position: relative;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) {   /*à partir de ... */
   /*taille < 600=mobile */
   .film {
     flex: 1 1 40%;
+  
   }
 }
+
+
+@media (max-width: 600px) {  /* inférieur à ... */
+  .mobile_hidden {
+    display: none;
+  }
+  .details_button {
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+}
+
 
 @media (min-width: 1025px) {
   /*taille > 600 - 1024= tab*/
   .film {
     flex: 1 1 25%;
+  }
+  .voir_btn {
+    display: none !important; 
   }
 }
 
@@ -162,6 +181,7 @@ body {
     height: 300px;
   }
 }
+
 
 .modal_img_mobile > img {
   width: 100%;
