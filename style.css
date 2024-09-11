@@ -22,7 +22,7 @@ body {
   flex-direction: column;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 600px) {   /* au dessus ou à partir de 600px (Tab/PC) =>  les images sont alignées horizontalement=row (Responsive design)*/
   .section_best_film {
     flex-direction: row;
   }
@@ -67,16 +67,14 @@ body {
   position: relative;
 }
 
-@media (min-width: 600px) {   /*à partir de ... */
-  /*taille < 600=mobile */
+@media (min-width: 600px) {   /* pour un écran au dessus de 600px (tab) => design responsive avec occupation de 40% du conteneur (image réduite à 40%) */
   .film {
     flex: 1 1 40%;
   
   }
 }
 
-
-@media (max-width: 600px) {  /* inférieur à ... */
+@media (max-width: 600px) {  /* pour un écran de 600px max (mobile) => pas d'affichage pour la classe "mobile_hidden" = "Vidéos à la demande" et recentrage du bouton 'détails' pour le meilleur film */
   .mobile_hidden {
     display: none;
   }
@@ -89,9 +87,7 @@ body {
 
 }
 
-
-@media (min-width: 1025px) {
-  /*taille > 600 - 1024= tab*/
+@media (min-width: 1025px) {    /*  pour un écran d'au moins 1025px (PC) => les éléments .film s'ajusteront pour occuper 25% de la largeur du conteneur (image réduite à 25%) */
   .film {
     flex: 1 1 25%;
   }
@@ -105,6 +101,7 @@ body {
   height: 100%;
   display: block;
 }
+
 .film_title {
   position: absolute;
   top: 10%;
@@ -114,6 +111,7 @@ body {
   color: white;
   padding: 1%;
 }
+
 .film_title > button {
   position: absolute;
   right: 0;
@@ -182,7 +180,6 @@ body {
   }
 }
 
-
 .modal_img_mobile > img {
   width: 100%;
   height: auto;
@@ -228,7 +225,6 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
 }
-
 
 select.classic {
   background-image: linear-gradient(45deg, transparent 50%, blue 50%),
