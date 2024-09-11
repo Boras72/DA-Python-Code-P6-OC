@@ -1,10 +1,10 @@
-// I - FONCTIONS GET
+// I - FONCTIONS GET (récupération des données)
 
 // Meilleur Film
 async function filmDetail(film_url) {
-  const response = await fetch(film_url);
-  const resultat = await response.json();
-  return resultat;
+  const response = await fetch(film_url);                         
+  const resultat = await response.json();                         
+  return resultat;                                              
 }
 
 async function getBestFilm() {
@@ -12,8 +12,8 @@ async function getBestFilm() {
     "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes"
   );
   const resultat = await response.json();
-  let film_url = resultat.results[0].url;
-  return filmDetail(film_url);
+  let film_url = resultat.results[0].url;   
+  return filmDetail(film_url);  
 }
 
 // Meilleurs films par catégorie
@@ -21,13 +21,13 @@ async function getFilmByCategory(category = "") {
   let url =
     "http://localhost:8000/api/v1/titles/?sort_by=-imdb_score,-votes&genre=" +
     category;
-  console.log(url);                    // A retirer ?
+                   
 
   let all_result = [];
   // requête pour récupérer les 6 films (5+1)
   const response = await fetch(url);
   const resultat = await response.json();
-  // let film_url = resultat.results[0].url;
+
   all_result = resultat.results;
   let next_url = resultat.next;
 
@@ -36,7 +36,7 @@ async function getFilmByCategory(category = "") {
     const resultat_next = await response_next.json();
 
     let second_result = resultat_next.results;
-    all_result = all_result.concat(second_result);
+    all_result = all_result.concat(second_result);  
   }
   return all_result;
 }
@@ -45,7 +45,7 @@ async function getFilmByCategory(category = "") {
 async function getAllCategory() {
   let url = "http://localhost:8000/api/v1/genres/";
   let all_category = [];
-  do {
+  do {    
     const response = await fetch(url);
     const resultat = await response.json();
 
@@ -55,16 +55,17 @@ async function getAllCategory() {
   return all_category;
 }
 
-// II - FONCTIONS DISPLAY
+
+// II - FONCTIONS DISPLAY  (récupération des données)
 
 // Meilleur film
 async function displayBestFilm() {
-  let best_film = await getBestFilm();
-  console.log(best_film);                          // A retirer ?
-  let section_best_film_element = document.getElementById("section_best_film");
-  console.log(section_best_film_element);          // A retirer ?
-  section_best_film_element.innerHTML = `<div>
-                <img src="${best_film.image_url}" alt="">
+  let best_film = await getBestFilm();  
+  console.log(best_film);                          
+  let section_best_film_element = document.getElementById("section_best_film"); 
+  console.log(section_best_film_element);          
+  section_best_film_element.innerHTML = `<div>        
+                <img src="${best_film.image_url}" alt="">          
             </div>
             <div>
                 <h2>${best_film.title}</h2>
@@ -83,9 +84,9 @@ async function displayAllBestFilm() {
   let best_film = document.getElementById("best_films");
 
   best_film.innerHTML = "";
-  all_best_film = all_best_film.slice(1, 7);
-  all_best_film.forEach((film) => {
-    best_film.innerHTML += `
+  all_best_film = all_best_film.slice(1, 7);  
+  all_best_film.forEach((film) => {   
+    best_film.innerHTML += `        
         <div class="film best_film" >
                 <img src="${film.image_url}" alt="">
                 <div class="film_title">
@@ -129,7 +130,7 @@ async function displayCategoryFilm(category_name, category_id) {
 async function displayOtherCategory() {
   let selector = document.getElementById("selector");
   let category_choice = selector.value;
-  console.log(category_choice);                   // A retirer ?
+                   
   if (category_choice != "") {
     displayCategoryFilm(category_choice, "other_category");
   } else {
@@ -147,9 +148,9 @@ async function displaySelectCategory() {
   });
 }
 
-async function displayModal(film_url) {
+async function displayModal(film_url) { 
   film = await filmDetail(film_url);
-  console.log(film);                    // A retirer ?
+                    
   let section_modal = document.getElementById("section_modal");
   section_modal.innerHTML = `
         <div class="modal">
@@ -205,9 +206,9 @@ function voirMoins(class_name) {
   ajustScreenFilm(class_name);
 }
 
-function ajustScreenFilm(class_name) {
+function ajustScreenFilm(class_name) {     
   const screen_width = window.innerWidth;
-  console.log(screen_width);                       // A retirer ?
+                         
   let films = document.getElementsByClassName(class_name);
   if (screen_width < 600) {
     for (let i = 0; i < films.length; i++) {
