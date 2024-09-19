@@ -56,14 +56,12 @@ async function getAllCategory() {
 }
 
 
-// II - FONCTIONS DISPLAY  (récupération des données)
+// II - FONCTIONS DISPLAY  (affichage des données)
 
 // Meilleur film
 async function displayBestFilm() {
-  let best_film = await getBestFilm();  
-  console.log(best_film);                          
-  let section_best_film_element = document.getElementById("section_best_film"); 
-  console.log(section_best_film_element);          
+  let best_film = await getBestFilm();                         
+  let section_best_film_element = document.getElementById("section_best_film");          
   section_best_film_element.innerHTML = `<div>        
                 <img src="${best_film.image_url}" alt="">          
             </div>
@@ -139,7 +137,7 @@ async function displayOtherCategory() {
 }
 
 async function displaySelectCategory() {
-  //afficher la liste des options
+//afficher la liste des options
   let selector = document.getElementById("selector");
   let all_category = await getAllCategory();
   selector.innerHTML = `<option value="">Choisissez une catégorie</option>`;
@@ -207,25 +205,24 @@ function voirMoins(class_name) {
 }
 
 function ajustScreenFilm(class_name) {     
-  const screen_width = window.innerWidth;
-                         
+  const screen_width = window.innerWidth; 
   let films = document.getElementsByClassName(class_name);
   if (screen_width < 600) {
     for (let i = 0; i < films.length; i++) {
-      if (i > 1) {
+      if (i > 1) {                    
         films[i].classList.add("hidden_film");
       }
     }
   } else if (screen_width < 1025) {
     for (let i = 0; i < films.length; i++) {
-      if (i > 3) {
+      if (i > 3) {              
         films[i].classList.add("hidden_film");
       }
     }
   }
-  let voir_plus = document.getElementById("voir_plus_" + class_name);
+  let voir_plus = document.getElementById("voir_plus_" + class_name);  
   let voir_moins = document.getElementById("voir_moins_" + class_name);
-  voir_plus.style.display = "block";
+  voir_plus.style.display = "block"; 
   voir_moins.style.display = "none";
 }
 
